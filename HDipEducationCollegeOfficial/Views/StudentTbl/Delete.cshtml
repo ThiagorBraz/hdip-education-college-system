@@ -1,0 +1,46 @@
+﻿@model HDipEducationCollegeOfficial.Models.StudentTbl
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>Please review the student information and grant application status before confirming deletion.</p>
+
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.StudentID)</dt>
+        <dd>@Html.DisplayFor(model => model.StudentID)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.StudentName)</dt>
+        <dd>@Html.DisplayFor(model => model.StudentName)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.PPSNumber)</dt>
+        <dd>@Html.DisplayFor(model => model.PPSNumber)</dd>
+
+        @if (ViewBag.GrantStatus != null)
+        {
+            <dt>Grant Application Student ID</dt>
+            <dd>@ViewBag.GrantStatus.ApplicationID</dd>
+            <dt>Grant Application PPS Number</dt>
+            <dd>@ViewBag.GrantStatus.PPSNumber</dd>
+            <dt>Grant Decision</dt>
+            <dd>@(ViewBag.GrantStatus.Decision ? "Approved" : "Rejected")</dd>
+        }
+        else
+        {
+            <dt>Grant Application Status</dt>
+            <dd>Not available</dd>
+        }
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

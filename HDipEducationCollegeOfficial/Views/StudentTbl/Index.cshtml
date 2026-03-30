@@ -1,0 +1,46 @@
+﻿@model IEnumerable<HDipEducationCollegeOfficial.Models.StudentTbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    Below is the list of all students currently registered in the system.
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PPSNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PPSNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
+            @Html.ActionLink("View Details and Delete", "Delete", new { id = item.StudentID })
+        </td>
+    </tr>
+}
+
+</table>
